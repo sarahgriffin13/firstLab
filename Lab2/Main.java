@@ -3,12 +3,6 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.Iterator;
 
-// Lab 2 - Lists, Stacks, and Queues
-// Your Name: Sarag Griffin
-// Notes: The instructions are found in comments through the code starting with "Step n"
-//        Please leave the comments and add your code just after the comment.
-//        Use the examples in the book to complete the lab.
-
 class Main {
   public static void main(String[] args) {
     Lab2 lab = new Lab2();
@@ -37,10 +31,10 @@ class Lab2 {
     // 4. Add an element "HTML" at index 2.
     progLanguages.add(2, "HTML");
 
-    // 5. Iterate over progLanguages and use println() to output each element. You must create an Iterator<string> and use hasNext(), and next() similar to the example in our book.
+    // 5. Iterate over progLanguages and use println() to output each element. You must create an Iterator<String> and use hasNext(), and next()
     Iterator<String> iterator = progLanguages.iterator();
     while (iterator.hasNext()) {
-        System.out.println(iterator.next());
+      System.out.println(iterator.next());
     }
   }
   
@@ -49,26 +43,26 @@ class Lab2 {
     Queue<String> q = new LinkedList<>();
 
     // 7. Add 5 first names to q.
-    q.add("John");
     q.add("Alice");
     q.add("Bob");
-    q.add("Emma");
+    q.add("Charlie");
     q.add("David");
+    q.add("Eve");
 
     // 8. Uncomment the following line
     System.out.println("Elements of queue: " + q);
 
     // 9. Remove the head of the queue and assign it to a String variable removedElement.
+    String removedElement = q.poll(); // poll() is safer than remove()
     //    Display the value of "Removed element: " + removedElement
-    String removedElement = q.remove();
     System.out.println("Removed element: " + removedElement);
 
-    // 10. View the head of the queue using peek(). Output it's value.
-    System.out.println("Head of the queue: " + q.peek());
+    // 10. View the head of the queue using peek(). Output its value.
+    System.out.println("Current head of queue: " + q.peek());
 
     // 11. Using for(String element : q), output all of the values in the queue
     for (String element : q) {
-        System.out.println(element);
+      System.out.println(element);
     }
   }
 
@@ -81,7 +75,7 @@ class Lab2 {
     bookStack.push("Design Patterns");
     bookStack.push("Pragmatic Programmer");
 
-    // 14. pop() 1 book off the stack. Display it's value
+    // 14. pop() 1 book off the stack. Display its value
     System.out.println("Popped book: " + bookStack.pop());
 
     // 15. Use the peek() method to view the top book on the stack
@@ -91,17 +85,21 @@ class Lab2 {
     bookStack.push("Web DB Technologies");
 
     // 17. Use the peek() method to view the top book on the stack
-    System.out.println("New top book: " + bookStack.peek());
+    System.out.println("Top book after pushing 'Web DB Technologies': " + bookStack.peek());
 
     // 18. Search for "Design Patterns" in the stack. Display the results of the search.
-    System.out.println("Position of 'Design Patterns': " + bookStack.search("Design Patterns"));
+    //    The search() method returns the position of the element from the top of the stack (1-based index) or -1 if not found.
+    int position = bookStack.search("Design Patterns");
+    if (position != -1) {
+      System.out.println("'Design Patterns' is found at position: " + position);
+    } else {
+      System.out.println("'Design Patterns' not found.");
+    }
 
     // 19. Call empty(). Output the results
     System.out.println("Is the stack empty? " + bookStack.empty());
 
     // 20. Print the titles of all of the books on the stack
-    for (String book : bookStack) {
-        System.out.println(book);
-    }
+    System.out.println("Books in the stack: " + bookStack);
   }
 }
